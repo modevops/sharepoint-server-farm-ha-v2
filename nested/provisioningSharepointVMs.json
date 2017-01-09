@@ -162,7 +162,6 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "wmfVersion": "latest",
           "modulesURL": "[parameters('spPreparationModulesURL')]",
           "wmfVersion": "4.0",
           "configurationFunction": "[parameters('spPreparationFunction')]",
@@ -260,7 +259,6 @@
         "settings": {
           "wmfVersion": "latest",
           "modulesURL": "[parameters('spPreparationModulesURL')]",
-          "wmfVersion": "4.0",
           "configurationFunction": "[parameters('spPreparationFunction')]",
           "properties": {
             "DNSServer": "[parameters('DNSServer')]",

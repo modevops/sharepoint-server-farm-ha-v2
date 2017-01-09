@@ -249,7 +249,7 @@
               "userName": "[parameters('sharePointFarmAccountUserName')]",
               "password": "privateSettingsRef:sharePointFarmAccountPassword"
             },
-                       "sharePointFarmPassphrasecreds": {
+            "sharePointFarmPassphrasecreds": {
               "userName": "ignore",
               "password": "privateSettingsRef:sharePointFarmPassphrasePassword"
             },
@@ -293,7 +293,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "modulesURL": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master/dscv2/joinConfigureSharePointServerHA.ps1.zip?raw=true",
-          "wmfVersion": "latest",
+           "wmfVersion": "latest",
           "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
           "properties": {
             "domainName": "[parameters('domainName')]",
