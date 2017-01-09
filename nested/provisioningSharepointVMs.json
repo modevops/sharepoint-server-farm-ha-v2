@@ -87,7 +87,7 @@
       "name": "[concat(parameters('spappVMName'), copyIndex())]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/availabilitySets/',parameters('spWebAvailabilitySetName'))]"
+        "[concat('Microsoft.Compute/availabilitySets/',parameters('spAppAvailabilitySetName'))]"
       ],
       "copy": {
         "name": "spAppVMLoop",
@@ -154,6 +154,7 @@
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
+        
         "[resourceId('Microsoft.Compute/virtualMachines', concat(parameters('spappVMName'),copyIndex()))]"
       ],
       "copy": {
@@ -182,7 +183,7 @@
       "name": "[concat(parameters('spwebVMName'), copyIndex())]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/availabilitySets/',parameters('spAppAvailabilitySetName'))]"
+        "[concat('Microsoft.Compute/availabilitySets/',parameters('spWebAvailabilitySetName'))]"
       ],
       "copy": {
         "name": "spWebVMLoop",
