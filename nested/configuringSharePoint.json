@@ -32,6 +32,12 @@
     "sharePointFarmAccountUserName": {
       "type": "string"
     },
+    "SPServicePoolManagedAccountUserName": {
+      "type": "string"
+    },
+    "SPWebPoolManagedAccountUserName": {
+      "type": "string"
+    },
     "sqlServerServiceAccountUserName": {
       "type": "string"
     },
@@ -54,6 +60,12 @@
       "type": "securestring"
     },
     "sharePointFarmAccountPassword": {
+      "type": "securestring"
+    },
+    "SPServicePoolManagedAccountPassword": {
+      "type": "securestring"
+    },
+    "SPWebPoolManagedAccountPassword": {
       "type": "securestring"
     },
     "sharePointFarmPassphrasePassword": {
@@ -104,6 +116,14 @@
               "userName": "[parameters('sharePointFarmAccountUserName')]",
               "password": "privateSettingsRef:sharePointFarmAccountPassword"
             },
+            "SpServicePoolManagedAccountcreds": {
+              "userName": "[parameters('sharePointFarmAccountUserName')]",
+              "password": "privateSettingsRef:sharePointFarmAccountPassword"
+            },
+            "SPWebPoolManagedAccountcreds": {
+              "userName": "[parameters('sharePointFarmAccountUserName')]",
+              "password": "privateSettingsRef:sharePointFarmAccountPassword"
+            },
             "sharePointFarmPassphrasecreds": {
               "userName": "ignore",
               "password": "privateSettingsRef:sharePointFarmPassphrasePassword"
@@ -130,6 +150,8 @@
             "adminPassword": "[parameters('adminPassword')]",
             "sharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
             "sharePointFarmAccountPassword": "[parameters('sharePointFarmAccountPassword')]",
+            "SPServicePoolManagedAccountPassword": "[parameters('SPServicePoolManagedAccountPassword')]",
+            "SPWebPoolManagedAccountPassword": "[parameters('SPWebPoolManagedAccountPassword')]",
             "sharePointFarmPassphrasePassword": "[parameters('sharePointFarmPassphrasePassword')]",
             "sqlServerServiceAccountPassword": "[parameters('sqlServerServiceAccountPassword')]"
           }
@@ -227,7 +249,7 @@
               "userName": "[parameters('sharePointFarmAccountUserName')]",
               "password": "privateSettingsRef:sharePointFarmAccountPassword"
             },
-            "sharePointFarmPassphrasecreds": {
+                       "sharePointFarmPassphrasecreds": {
               "userName": "ignore",
               "password": "privateSettingsRef:sharePointFarmPassphrasePassword"
             },
