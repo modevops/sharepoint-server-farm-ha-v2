@@ -500,30 +500,61 @@
         "description": "The Sharepoint Farm account password"
       }
     },
-    "sharePointFarmPassphrasePassword": {
-      "type": "securestring",
-      "metadata": {
-        "group": "SharePoint Server settings",
-        "description": "The Sharepoint Farm Passphrase"
+      "SPServicePoolManagedAccountUserName": {
+        "type": "string",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint Service Pool account name"
+        },
+        "defaultValue": "sp_service"
+      },
+      "SPServicePoolManagedAccountPassword": {
+        "type": "securestring",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint Farm account password"
+        }
+      },
+      "SPWebPoolManagedAccountUserName": {
+        "type": "string",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint Web Pool account name"
+        },
+        "defaultValue": "sp_webpool"
+      },
+
+      "SPWebPoolManagedAccountPassword": {
+        "type": "securestring",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint WEb Pool account password"
+        }
+      },
+      "sharePointFarmPassphrasePassword": {
+        "type": "securestring",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint Farm Passphrase"
+        }
+      },
+      "spSiteTemplateName": {
+        "type": "string",
+        "metadata": {
+          "group": "SharePoint Server settings",
+          "description": "The Sharepoint Content Site Template Name"
+        },
+        "defaultValue": "STS#0"
+      },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "group": "Infrastructure settings",
+          "description": "The region to deploy the resources into. Only change if resources need to be deployed to a different location than the resource group."
+        },
+        "defaultValue": "[resourceGroup().location]"
       }
     },
-    "spSiteTemplateName": {
-      "type": "string",
-      "metadata": {
-        "group": "SharePoint Server settings",
-        "description": "The Sharepoint Content Site Template Name"
-      },
-      "defaultValue": "STS#0"
-    },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "group": "Infrastructure settings",
-        "description": "The region to deploy the resources into. Only change if resources need to be deployed to a different location than the resource group."
-      },
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
   "variables": {
     "lbSettings": {
       "rdpLBFE": "rdpLBFE",
@@ -1642,6 +1673,12 @@
           "sharePointFarmAccountUserName": {
             "value": "[parameters('sharePointFarmAccountUserName')]"
           },
+          "SPServicePoolManagedAccountUserName": {
+            "value": "[parameters('SPServicePoolManagedAccountUserName')]"
+          },
+          "SPWebPoolManagedAccountUserName": {
+            "value": "[parameters('SPWebPoolManagedAccountUserName')]"
+          },
           "sqlServerServiceAccountUserName": {
             "value": "[parameters('sqlServerServiceAccountUserName')]"
           },
@@ -1668,6 +1705,12 @@
           },
           "sharePointFarmPassphrasePassword": {
             "value": "[parameters('sharePointFarmPassphrasePassword')]"
+          },
+          "SPServicePoolManagedAccountPassword": {
+            "value": "[parameters('SPServicePoolManagedAccountPassword')]"
+          },
+          "SPWebPoolManagedAccountPassword": {
+            "value": "[parameters('SPWebPoolManagedAccountPassword')]"
           },
           "sqlServerServiceAccountPassword": {
             "value": "[parameters('sqlServerServiceAccountPassword')]"
