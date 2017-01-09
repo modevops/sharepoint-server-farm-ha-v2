@@ -952,6 +952,29 @@
       }
     },
     {
+      "name": "CreatingAvailabilitySets",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'),'/','nested','/','availabilitySets.json', parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+         "spWebAvailabilitySetName": {
+            "value": "[variables('vmSettings').availabilitySets.spWebAvailabilitySetName]"
+          },
+          "spAppAvailabilitySetName": {
+            "value": "[variables('vmSettings').availabilitySets.spAppAvailabilitySetName]"
+          }
+        }
+      }
+    },
+    {
       "name": "CreatingNetworkInterfaces",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -1060,7 +1083,7 @@
           "sqlAvailabilitySetName": {
             "value": "[variables('vmSettings').availabilitySets.sqlAvailabilitySetName]"
           },
-        "sqlStorageAccountName": {
+          "sqlStorageAccountName": {
             "value": "[parameters('sqlStorageAccountName')]"
           },
           "dcStorageAccountName": {
