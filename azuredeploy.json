@@ -103,6 +103,7 @@
     "witnessVMSize": {
       "type": "string",
       "allowedValues": [
+        "Standard_A2",
         "Standard_DS1",
         "Standard_DS2",
         "Standard_DS3",
@@ -221,7 +222,7 @@
         "group": "Infrastructure settings",
         "description": "Change this value to your repo name if deploying from a fork"
       },
-      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha/master"
+      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha-v2/master"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -286,14 +287,14 @@
       "metadata": {
         "description": "Linked Templates base url"
       },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sqlvm-alwayson-cluster/nested"
+      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha-v2/master/nested"
     },
     "scriptsBaseUrl": {
       "type": "string",
       "metadata": {
         "description": "DSC Scripts base url"
       },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sqlvm-alwayson-cluster/scripts"
+      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha-v2/master/scripts"
     },
     "autoPatchingDay": {
       "type": "string",

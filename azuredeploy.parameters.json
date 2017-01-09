@@ -17,6 +17,9 @@
     "sqlStorageAccountType": {
       "value": "Premium_LRS"
     },
+    "spStorageAccountType": {
+      "value": "Premium_LRS"
+    },
     "dcStorageAccountType": {
       "value": "Standard_LRS"
     },
@@ -24,6 +27,9 @@
       "value": "GEN-UNIQUE"
     },
     "dcStorageAccountName": {
+      "value": "GEN-UNIQUE"
+    },
+    "spStorageAccountName": {
       "value": "GEN-UNIQUE"
     },
     "adVMSize": {
