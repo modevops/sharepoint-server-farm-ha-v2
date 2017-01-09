@@ -8,10 +8,16 @@
     "dcStorageAccountName": {
       "type": "string"
     },
+    "spStorageAccountName": {
+      "type": "string"
+    },
     "location": {
       "type": "string"
     },
     "SqlStorageAccountType": {
+      "type": "string"
+    },
+    "SpStorageAccountType": {
       "type": "string"
     },
     "DcStorageAccountType": {
@@ -47,6 +53,15 @@
       "location": "[parameters('location')]",
       "properties": {
         "accountType": "[parameters('SqlStorageAccountType')]"
+      }
+    },
+    {
+      "name": "[parameters('spStorageAccountName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "[parameters('SPStorageAccountType')]"
       }
     },
     {
