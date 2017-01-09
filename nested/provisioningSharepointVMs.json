@@ -272,5 +272,15 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "spWebAvailabilitySetName": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('spWebAvailabilitySetName'))]"
+    },
+    "spAppAvailabilitySetName": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('spAppAvailabilitySetName'))]"
+    }
+  
+  }
 }
