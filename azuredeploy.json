@@ -1608,7 +1608,7 @@
             "value": "[parameters('sqlStorageAccountName')]"
           },
           "spPreparationModulesURL": {
-            "value": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','PrepareSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
+            "value": "[concat(parameters('_artifactsLocation'),'/','scripts','/','PrepareSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
           },
           "spPreparationFunction": {
             "value": "PrepareSharePointServerHA.ps1\\PrepareSharePointServerHA"
@@ -1633,7 +1633,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'),'/','nestedtemplates','/','configuringSharePoint.json', parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'),'/','nested','/','configuringSharePoint.json', parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -1647,7 +1647,7 @@
             "value": "[parameters('location')]"
           },
           "spConfigurationModulesURL": {
-            "value": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','ConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
+            "value": "[concat(parameters('_artifactsLocation'),'/','scripts','/','ConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
           },
           "spConfigurationFunction": {
             "value": "ConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
