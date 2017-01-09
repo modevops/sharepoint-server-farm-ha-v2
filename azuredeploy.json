@@ -17,6 +17,7 @@
     "adVMSize": {
       "type": "string",
       "allowedValues": [
+        "Standard_A2",
         "Standard_D1_v2",
         "Standard_D2_v2",
         "Standard_D3_v2",
@@ -63,11 +64,12 @@
       "metadata": {
         "description": "The size of the AD VMs Created"
       },
-      "defaultValue": "Standard_D1"
+      "defaultValue": "Standard_A2"
     },
     "sqlVMSize": {
       "type": "string",
       "allowedValues": [
+        "Standard_A2",
         "Standard_DS1",
         "Standard_DS2",
         "Standard_DS3",
@@ -129,7 +131,7 @@
       "metadata": {
         "description": "The size of the Witness VM Created"
       },
-      "defaultValue": "Standard_DS1"
+      "defaultValue": "Standard_A2",
     },
     "domainName": {
       "type": "string",
@@ -160,6 +162,7 @@
     "sqlStorageAccountType": {
       "type": "string",
       "allowedValues": [
+        "Standard_LRS",
         "Premium_LRS"
       ],
       "metadata": {
