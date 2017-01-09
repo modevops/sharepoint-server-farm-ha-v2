@@ -292,9 +292,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "wmfVersion": "latest",
           "modulesURL": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master/dscv2/joinConfigureSharePointServerHA.ps1.zip?raw=true",
-           "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
+          "wmfVersion": "latest",
+          "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
