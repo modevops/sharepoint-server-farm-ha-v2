@@ -2,12 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "spWebAvailabilitySetName": {
-      "type": "string"
-    },
-    "spAppAvailabilitySetName": {
-      "type": "string"
-    },
     "spappVMName": {
       "type": "string"
     },
@@ -44,7 +38,7 @@
     "vmContainerName": {
       "type": "string"
     },
-    "spStorageAccountName": {
+    "storageAccountNamePrefix": {
       "type": "string"
     },
     "spPreparationModulesURL": {
@@ -62,33 +56,10 @@
   },
   "resources": [
     {
-      "type": "Microsoft.Compute/availabilitySets",
-      "name": "[parameters('spWebAvailabilitySetName')]",
-      "apiVersion": "2015-06-15",
-      "location": "[parameters('location')]",
-      "properties": {
-        "platformFaultDomainCount": 2,
-        "platformUpdateDomainCount": 2
-      }
-    },
-    {
-      "type": "Microsoft.Compute/availabilitySets",
-      "name": "[parameters('spAppAvailabilitySetName')]",
-      "apiVersion": "2015-06-15",
-      "location": "[parameters('location')]",
-      "properties": {
-        "platformFaultDomainCount": 2,
-        "platformUpdateDomainCount": 2
-      }
-    },
-    {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('spappVMName'), copyIndex())]",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/availabilitySets/',parameters('spAppAvailabilitySetName'))]"
-      ],
       "copy": {
         "name": "spAppVMLoop",
         "count": 2
@@ -115,7 +86,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/',parameters('spappVMName'), copyIndex(),'-osdisk.vhd')]"
+              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/',parameters('spappVMName'), copyIndex(),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -123,7 +94,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/', parameters('spappVMName'), copyIndex(), '-Data-1.vhd')]"
+                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/', parameters('spappVMName'), copyIndex(), '-Data-1.vhd')]"
               },
               "name": "[concat(parameters('spappVMName'), copyIndex(),'-data-disk1')]",
               "caching": "None",
@@ -143,7 +114,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '4')), '2016-01-01').primaryEndpoints.blob)]"
+            "storageUri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '4')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
       }
@@ -154,7 +125,6 @@
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
-        
         "[resourceId('Microsoft.Compute/virtualMachines', concat(parameters('spappVMName'),copyIndex()))]"
       ],
       "copy": {
@@ -182,9 +152,6 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('spwebVMName'), copyIndex())]",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/availabilitySets/',parameters('spWebAvailabilitySetName'))]"
-      ],
       "copy": {
         "name": "spWebVMLoop",
         "count": 2
@@ -211,7 +178,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/',parameters('spwebVMName'), copyIndex(),'-osdisk.vhd')]"
+              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/',parameters('spwebVMName'), copyIndex(),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -219,7 +186,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/', parameters('spwebVMName'), copyIndex(), '-Data-1.vhd')]"
+                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '3')), '2016-01-01').primaryEndpoints.blob, parameters('vmContainerName'),'/', parameters('spwebVMName'), copyIndex(), '-Data-1.vhd')]"
               },
               "name": "[concat(parameters('spwebVMName'), copyIndex(),'-data-disk1')]",
               "caching": "None",
@@ -239,7 +206,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": "true",
-            "storageUri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('spStorageAccountName'), '4')), '2016-01-01').primaryEndpoints.blob)]"
+            "storageUri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('storageAccountNamePrefix'), '4')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
       }
@@ -262,8 +229,8 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "wmfVersion": "latest",
           "modulesURL": "[parameters('spPreparationModulesURL')]",
+          "wmfVersion": "4.0",
           "configurationFunction": "[parameters('spPreparationFunction')]",
           "properties": {
             "DNSServer": "[parameters('DNSServer')]",
@@ -273,15 +240,5 @@
       }
     }
   ],
-  "outputs": {
-    "spWebAvailabilitySetName": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('spWebAvailabilitySetName'))]"
-    },
-    "spAppAvailabilitySetName": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('spAppAvailabilitySetName'))]"
-    }
-  
-  }
+  "outputs": {}
 }
