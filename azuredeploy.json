@@ -214,7 +214,7 @@
       "metadata": {
         "description": "The address range of the new VNET in CIDR format"
       },
-      "defaultValue": "10.0.0.0/16"
+      "defaultValue": "10.0.0.0/24"
     },
     "_artifactsLocation": {
       "type": "string",
@@ -419,7 +419,7 @@
         "group": "SharePoint Server settings",
         "description": "The address range of the SP Web subnet created in the new VNET"
       },
-      "defaultValue": "10.0.2.0/24"
+      "defaultValue": "10.0.4.0/25"
     },
     "spAppSubnet": {
       "type": "string",
@@ -427,7 +427,7 @@
         "group": "SharePoint Server settings",
         "description": "The address range of the SP App subnet created in the new VNET"
       },
-      "defaultValue": "10.0.3.0/24"
+      "defaultValue": "10.0.5.0/25"
     },
     "spWebIPRGName": {
       "type": "string",
